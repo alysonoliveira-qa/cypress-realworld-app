@@ -76,37 +76,26 @@
       "modifiedAt": "2024-03-07T00:07:36.510Z"
     },
     {
-      "id": "MdbIZhmno",
-      "uuid": "f6133605-640f-4543-9da5-c52723d2f5ac",
+      "id": "Q_R8b111c",
+      "uuid": "256a3a5a-dca7-40a7-8ed2-c2ec2619c2ce",
       "firstName": "Mystogan",
       "lastName": "Oliveira",
-      "username": "Mystogan89",
-      "password": "$2a$10$ytXUH79mKvc.b4.DEEW5O.lH8nPlXb0gWi3tvV9dZmV1Kvavq7zpq",
+      "username": "mystogan_oliveira_1769829620961",
+      "password": "$2a$10$mwXZCsSwZutGM/Ezp9M0vesNqkZ2nZbkU9tvlPDJRBTxkpeTwRFby",
       "balance": 0,
-      "createdAt": "2026-01-25T03:13:46.076Z",
-      "modifiedAt": "2026-01-25T03:13:46.076Z"
+      "createdAt": "2026-01-31T03:20:24.260Z",
+      "modifiedAt": "2026-01-31T03:20:24.260Z"
     },
     {
-      "id": "edwpQyRBt",
-      "uuid": "b5427b1d-562b-4a0e-b9da-3d28cda570b8",
+      "id": "bG4IFH0wI",
+      "uuid": "55792ff2-adeb-4772-9a1a-c16b6437f489",
       "firstName": "Mystogan",
       "lastName": "Oliveira",
-      "username": "Mystogan89",
-      "password": "$2a$10$RBApIUgvw45RnEnO06ba9.kBRFLz9RIPp5CTZ7eII74pBonRfTLLS",
+      "username": "mystogan_oliveira_1769829802517",
+      "password": "$2a$10$vJoe.gewKprJ3S9o5QgL7.5zE7rfLyJvN2PaGveayk5PBxypQS6cW",
       "balance": 0,
-      "createdAt": "2026-01-25T03:23:22.805Z",
-      "modifiedAt": "2026-01-25T03:23:22.805Z"
-    },
-    {
-      "id": "o0l1j70Lk",
-      "uuid": "f8812dc5-7b6a-41fb-bb7a-d4b440b88c83",
-      "firstName": "Mystogan",
-      "lastName": "Oliveira",
-      "username": "Heath93",
-      "password": "$2a$10$IZqhg1tCNoDwKpZAOnMF8OjSBo8tvtbbIe75gycXgca6J1NhNGK0O",
-      "balance": 0,
-      "createdAt": "2026-01-25T03:24:31.445Z",
-      "modifiedAt": "2026-01-25T03:24:31.445Z"
+      "createdAt": "2026-01-31T03:23:25.808Z",
+      "modifiedAt": "2026-01-31T03:23:25.808Z"
     }
   ],
   "contacts": [
@@ -286,17 +275,6 @@
       "isDeleted": false,
       "createdAt": "2024-01-26T14:01:01.815Z",
       "modifiedAt": "2024-03-07T08:44:31.174Z"
-    },
-    {
-      "id": "uYHRN7x9g",
-      "uuid": "965d79cd-e7c3-4091-a463-f052de642c1e",
-      "userId": "MdbIZhmno",
-      "bankName": "NuBank",
-      "accountNumber": "123456789",
-      "routingNumber": "123456789",
-      "isDeleted": false,
-      "createdAt": "2026-01-25T03:16:01.786Z",
-      "modifiedAt": "2026-01-25T03:16:01.786Z"
     }
   ],
   "transactions": [
