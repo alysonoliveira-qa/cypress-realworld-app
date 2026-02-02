@@ -54,7 +54,7 @@ describe('Tentar fazer login com credenciais inválidas', () => {
     cy.url().should('include', '/signin')
   });
 
-it('CT006-LG Login sem preencher senha', () => {
+  it('CT006-LG Login sem preencher senha', () => {
     // Usuário possui acesso ao sistema e está na pagina de Login
     cy.visit('http://localhost:3000')
     cy.get('[data-test="signin-username"] input').type('Heath93')
@@ -73,6 +73,6 @@ it('CT006-LG Login sem preencher senha', () => {
   cy.url().should('include', '/signup')
   // Confirma que está na tela de cadastro
   cy.contains('Sign Up').should('be.visible')
-})
- 
+  });
+   
 });

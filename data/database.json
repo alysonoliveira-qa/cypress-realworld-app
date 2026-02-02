@@ -76,26 +76,125 @@
       "modifiedAt": "2024-03-07T00:07:36.510Z"
     },
     {
-      "id": "Q_R8b111c",
-      "uuid": "256a3a5a-dca7-40a7-8ed2-c2ec2619c2ce",
+      "id": "REssTDwI0",
+      "uuid": "db818816-2b1e-403e-bf4a-8650e1200621",
       "firstName": "Mystogan",
       "lastName": "Oliveira",
-      "username": "mystogan_oliveira_1769829620961",
-      "password": "$2a$10$mwXZCsSwZutGM/Ezp9M0vesNqkZ2nZbkU9tvlPDJRBTxkpeTwRFby",
+      "username": "mystogan_oliveira_1770055645075",
+      "password": "$2a$10$.w7pUrcAqZwaIWs42kdUhuMFsyRe4LV7Jks0oBDHBtNYyMjSBUNy6",
       "balance": 0,
-      "createdAt": "2026-01-31T03:20:24.260Z",
-      "modifiedAt": "2026-01-31T03:20:24.260Z"
+      "createdAt": "2026-02-02T18:07:34.221Z",
+      "modifiedAt": "2026-02-02T18:07:34.221Z"
     },
     {
-      "id": "bG4IFH0wI",
-      "uuid": "55792ff2-adeb-4772-9a1a-c16b6437f489",
+      "id": "l3xAiGuK3",
+      "uuid": "1815a566-a65d-42c8-bd57-596ec3780338",
+      "firstName": "Heath93",
+      "lastName": "Oliveira",
+      "username": "mystogan_oliveira_1770058484190",
+      "password": "$2a$10$g1t7kszR3NZ4Y7UiDXrv2u40nZQKmAjMfYPIBmaqqo63JJ3R4T0SW",
+      "balance": 0,
+      "createdAt": "2026-02-02T18:55:03.249Z",
+      "modifiedAt": "2026-02-02T18:55:03.249Z"
+    },
+    {
+      "id": "nWnAp_KMc",
+      "uuid": "e8cb1e44-24af-45f7-941a-3486e5fe2032",
+      "firstName": "Heath93",
+      "lastName": "Oliveira",
+      "username": "mystogan_oliveira_1770058558132",
+      "password": "$2a$10$79ZemMzxAXDur8FpSEWaOeYyzKOEUhlnBJmWBQ2lgVdVy8HSIwIde",
+      "balance": 0,
+      "createdAt": "2026-02-02T18:56:00.610Z",
+      "modifiedAt": "2026-02-02T18:56:00.610Z"
+    },
+    {
+      "id": "NHSALCTnT",
+      "uuid": "59c74f0f-d70f-4f84-81e7-338f6db28faf",
       "firstName": "Mystogan",
       "lastName": "Oliveira",
-      "username": "mystogan_oliveira_1769829802517",
-      "password": "$2a$10$vJoe.gewKprJ3S9o5QgL7.5zE7rfLyJvN2PaGveayk5PBxypQS6cW",
+      "username": "Heath93",
+      "password": "$2a$10$v7MoLE2p8H7Yt97HiQsHZu7MkSvJexPaETh4cxJhSAHac9xnHAeN6",
       "balance": 0,
-      "createdAt": "2026-01-31T03:23:25.808Z",
-      "modifiedAt": "2026-01-31T03:23:25.808Z"
+      "createdAt": "2026-02-02T18:58:04.779Z",
+      "modifiedAt": "2026-02-02T18:58:04.779Z"
+    },
+    {
+      "id": "3Di3LrJ2Y",
+      "uuid": "c9f11fed-f718-4dbf-bd55-f515d56c555d",
+      "firstName": "Mystogan",
+      "lastName": "Oliveira",
+      "username": "usuario_existente",
+      "password": "$2a$10$He8hrSFCbc44zJU5I/eDzOyLCTqZ8kuNS0Y4n4jsMi2pO8B41vU7W",
+      "balance": 0,
+      "createdAt": "2026-02-02T19:03:03.441Z",
+      "modifiedAt": "2026-02-02T19:03:03.441Z"
+    },
+    {
+      "id": "JaGhcnFn9",
+      "uuid": "9ad8452d-4bde-4fb2-b5cd-3c63b51822fe",
+      "firstName": "Mystogan",
+      "lastName": "Oliveira",
+      "username": "mystogan_oliveira_1770059756191",
+      "password": "$2a$10$NTAVQii86cW/i4ea5KL9H.o4D50jW1Z6vQz0rB.ghwWMOZIj07Mxa",
+      "balance": 0,
+      "createdAt": "2026-02-02T19:15:59.428Z",
+      "modifiedAt": "2026-02-02T19:15:59.428Z"
+    },
+    {
+      "id": "uFpr78lsF",
+      "uuid": "816a2336-e85f-4b96-a8fd-734343081caf",
+      "firstName": "Mystogan",
+      "lastName": "Oliveira",
+      "username": "usuario_existente",
+      "password": "$2a$10$bLwMxf4Ba30byBiWnvLQOe7Q1HH0nkxZNmujdR0gRsPz1DfVIySga",
+      "balance": 0,
+      "createdAt": "2026-02-02T19:16:18.752Z",
+      "modifiedAt": "2026-02-02T19:16:18.752Z"
+    },
+    {
+      "id": "gj-bXvBah",
+      "uuid": "0aa5d57d-bd4f-4dc1-b84e-65308249564d",
+      "firstName": "Mystogan",
+      "lastName": "Oliveira",
+      "username": "mystogan_oliveira_1770059883226",
+      "password": "$2a$10$7J3/C4g8VhORoZcGPZLUIuwmcpwvZOfz18bTFpxdYPlJqRhvewb.e",
+      "balance": 0,
+      "createdAt": "2026-02-02T19:18:06.372Z",
+      "modifiedAt": "2026-02-02T19:18:06.372Z"
+    },
+    {
+      "id": "pVTCulJVw",
+      "uuid": "547be357-6315-4d40-b6a9-f85c06ab52b1",
+      "firstName": "Mystogan",
+      "lastName": "Oliveira",
+      "username": "usuario_existente",
+      "password": "$2a$10$42Qmc6hie4sqR4CdI7ZqgOndIpVMsdpvdUMTiDD2J0I1YaDNOKoiS",
+      "balance": 0,
+      "createdAt": "2026-02-02T19:18:26.009Z",
+      "modifiedAt": "2026-02-02T19:18:26.009Z"
+    },
+    {
+      "id": "wKHZ3D6Ww",
+      "uuid": "1771bbb7-e615-45b4-bcd7-7d734692952a",
+      "firstName": "Mystogan",
+      "lastName": "Oliveira",
+      "username": "mystogan_oliveira_1770060073320",
+      "password": "$2a$10$.8AYhI7mmzlOwQ1xgwwnTeux7Eq.j9c24xHEswfU9vVcDgZNALrEu",
+      "balance": 0,
+      "createdAt": "2026-02-02T19:21:16.613Z",
+      "modifiedAt": "2026-02-02T19:21:16.613Z"
+    },
+    {
+      "id": "Z85iBomfq",
+      "uuid": "57008b40-ec95-476c-a648-9ba70dbac41c",
+      "firstName": "Mystogan",
+      "lastName": "Oliveira",
+      "username": "usuario_existente",
+      "password": "$2a$10$tpPDSBCE6j41ZLzB39F5gejMEimn9Lz1zAhcUPY2jn0yjxLqzpfqO",
+      "balance": 0,
+      "createdAt": "2026-02-02T19:21:31.227Z",
+      "modifiedAt": "2026-02-02T19:21:31.227Z"
     }
   ],
   "contacts": [
