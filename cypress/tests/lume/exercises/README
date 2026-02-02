@@ -1,0 +1,168 @@
+# 🧪 QA Automation Exercise — Login & Sign Up
+
+## 📌 Contexto
+
+Este documento descreve um **case completo de automação de testes em Cypress**, focado nos fluxos de **Login** e **Sign Up (Cadastro)** da aplicação **Real World App**.
+
+O objetivo não é apenas automatizar cenários, mas **demonstrar raciocínio de QA**, tomada de decisão, análise de UX, comportamento de backend e comunicação clara — exatamente o que recrutadores e times técnicos esperam ver em um portfólio real.
+
+---
+
+## 🎯 Objetivos do Case
+
+* Validar os principais fluxos críticos de autenticação
+* Cobrir cenários positivos, negativos e de validação de formulário
+* Demonstrar boas práticas de automação com Cypress
+* Evidenciar análise crítica de UX, frontend e backend
+* Documentar decisões, limitações e achados
+
+---
+
+## 🧠 Estratégia de Testes
+
+A estratégia foi baseada em **mapa mental + agrupamento por intenção**, não apenas por campos.
+
+### Grupos de Teste
+
+#### Grupo 1 — Fluxo principal
+
+* CT001-LG — Login com sucesso
+* CT001-SU — Criar conta com dados válidos
+
+#### Grupo 2 — Credenciais inválidas
+
+* CT002-LG — Username não cadastrado
+* CT003-LG — Username válido + senha inválida
+* CT004-LG — Username inválido + senha válida
+
+#### Grupo 3 — Validações de formulário
+
+* CT005-LG — Login sem preencher username
+* CT006-LG — Login sem preencher senha
+
+#### Grupo 4 — Navegação
+
+* CT007-LG — Acessar página de cadastro a partir do Login
+* CT010-SU — Acessar página de Login a partir do Sign Up
+
+#### Grupo 5 — Sign Up (Cadastro)
+
+* CT002-SU — Todos os campos em branco
+* CT003-SU — First Name em branco
+* CT004-SU — Last Name em branco
+* CT005-SU — Username em branco
+* CT006-SU — Password em branco
+* CT007-SU — Confirm Password em branco
+* CT008-SU — Password e Confirm Password diferentes
+* CT009-SU — Username já existente
+
+---
+
+## ⚙️ Stack e Ferramentas
+
+* **Cypress** (E2E)
+* **TypeScript**
+* **Data-test selectors**
+* **Git + GitHub Actions**
+* **Prettier + ESLint**
+* **Trello** (modelagem dos cenários)
+
+---
+
+## 🧩 Boas Práticas Aplicadas
+
+* Uso consistente de `data-test` selectors
+* Testes focados em **comportamento**, não em implementação
+* Evitado uso de `force: true`
+* Separação clara de Arrange / Act / Assert
+* Nomes de testes legíveis e rastreáveis (CTxxx)
+
+---
+
+## 🔍 Insights Relevantes Encontrados
+
+### 1️⃣ Botão desabilitado como validação primária
+
+Em diversos cenários (Login e Sign Up), a aplicação **impede o submit via botão desabilitado**, sem exibir mensagens de erro.
+
+➡️ Decisão de QA:
+
+* Validar o estado `disabled` do botão
+* **Não forçar submit** artificialmente
+* Documentar como comportamento esperado de UX
+
+---
+
+### 2️⃣ Mensagens de erro dependentes de interação (blur)
+
+No Sign Up:
+
+* `First Name` exibe erro imediatamente
+* Outros campos só exibem mensagem **após perder o foco (blur)**
+
+➡️ Implicação:
+
+* Testes precisam simular interação real
+* Assertivas diretas em texto podem falhar se o fluxo não respeitar o comportamento do usuário
+
+---
+
+### 3️⃣ Inconsistência no backend — Username duplicado
+
+No CT009-SU, o sistema **permite criar usuários com username já existente**, sem erro.
+
+➡️ Classificação:
+
+* **Defeito funcional (backend)**
+* Registrado como limitação do sistema, não do teste
+* Teste documentado no README e Trello
+
+---
+
+### 4️⃣ Erro 401 tratado via toast genérico
+
+Nos fluxos de login inválido:
+
+* Backend retorna **401**
+* Frontend exibe mensagem genérica: `Username or password is invalid`
+
+➡️ Estratégia de teste:
+
+* Assertar o toast
+* Assertar permanência na rota `/signin`
+* Não depender diretamente do status HTTP no teste E2E
+
+---
+
+## 📄 Estrutura dos Arquivos
+
+```text
+cypress/tests/lume/exercises/auth/
+├── login.spec.ts
+└── signup.spec.ts
+```
+
+---
+
+## 📘 O que este case demonstra
+
+* Capacidade de modelar cenários reais
+* Leitura crítica de UX e regras implícitas
+* Comunicação técnica clara
+* Maturidade em decisões de teste
+* Organização de portfólio profissional
+
+---
+
+## 🚀 Próximos Passos
+
+* Evoluir testes para camada de API
+* Criar custom commands
+* Adicionar relatório de execução
+* Integrar métricas de cobertura
+
+---
+
+## 🧑‍💻 Autor
+
+Projeto desenvolvido como **case de portfólio em QA Automation**, com foco em boas práticas, clareza técnica e empregabilidade.
