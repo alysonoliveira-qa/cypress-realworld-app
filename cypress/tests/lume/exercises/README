@@ -1,153 +1,156 @@
-# QA Automation Case — Login & Sign Up
+# QA Automation Exercise – Cypress (Login & Sign Up)
 
-## Overview
+## 📌 Overview
 
-This repository contains a **complete QA automation case** built on top of the *Real World App* using **Cypress**.
+This repository documents a **complete QA Automation case study** built on top of the **Cypress Real World App**.
+The focus of this exercise is not only automation itself, but also **test design decisions, validation strategies, and real-world trade-offs** that a QA Engineer faces in production environments.
 
-The goal of this project is **not only automation**, but to demonstrate **QA reasoning, test design decisions, validations, edge cases, and real-world issues** that commonly appear in production systems.
+This project is intentionally documented as a **portfolio-ready case**, aiming to be easily understood by:
 
-This case was intentionally structured as a **portfolio-grade project**, suitable for technical reviews by:
-
-* QA Engineers
-* Tech Leads
-* Hiring Managers
 * Recruiters
+* QA Leads
+* Automation Engineers
 
 ---
 
-## Why this is a Portfolio Case
+## 🎯 Goals of This Exercise
 
-Unlike tutorial-style projects, this case focuses on:
-
-* Test scenarios derived from **functional analysis**, not just happy paths
-* Clear separation between **test intent** and **test implementation**
-* Assertions based on **user behavior**, not brittle UI details
-* Documentation of **known issues and system limitations**
-* Traceability between test cases, automation, and insights
-
-This mirrors how QA automation works in real teams.
+* Design **realistic test scenarios** for critical user flows
+* Apply **good automation practices** using Cypress
+* Focus on **behavioral assertions**, not brittle UI checks
+* Explicitly document **limitations and bugs found in the application**
+* Demonstrate **QA thinking**, not only coding skills
 
 ---
 
-## Scope of the Case
+## 🧪 Scope Covered
 
-### Features Covered
+### Authentication Flows
 
-* User Sign Up (Registration)
-* User Login
+* Login
+* Sign Up (User Registration)
 
-### Test Types
-
-* Functional validation
-* Negative scenarios
-* Field-level validations
-* Business rule enforcement
-* UX-related behavior (error messages, redirects, button states)
+This README focuses on the **Sign Up flow**, fully modeled, implemented, and analyzed.
 
 ---
 
-## Test Case Structure
+## 🔐 Test Case Design – Login
 
-Each test case follows a consistent pattern:
+The Login flow was the **first functionality automated** in this exercise, as it represents a critical entry point to the system.
 
-* **CT ID** (e.g. CT001-SU)
-* **Scenario description**
-* **Expected behavior**
-* **Automation implementation using Cypress**
+The focus during test design was:
+
+* Authentication correctness
+* Invalid credential handling
+* Form-level validations
+* Navigation behavior
+
+### Test Cases Implemented – Login
+
+| ID       | Description                                    |
+| -------- | ---------------------------------------------- |
+| CT001-LG | Login with valid credentials                   |
+| CT002-LG | Login with username not registered             |
+| CT003-LG | Login with valid username and invalid password |
+| CT004-LG | Login with invalid username and valid password |
+| CT005-LG | Attempt login without filling username         |
+| CT006-LG | Attempt login without filling password         |
+| CT007-LG | Navigate to Sign Up page from Login            |
+
+---
+
+## 🧩 Test Case Design – Sign Up
+
+The Sign Up flow was modeled before automation, following a **clear and incremental strategy**.
+
+### Test Cases Implemented
+
+| ID       | Description                                |
+| -------- | ------------------------------------------ |
+| CT001-SU | Create account with valid data             |
+| CT002-SU | Attempt to submit with all fields empty    |
+| CT003-SU | First Name empty                           |
+| CT004-SU | Last Name empty                            |
+| CT005-SU | Username empty                             |
+| CT006-SU | Password empty                             |
+| CT007-SU | Confirm Password empty                     |
+| CT008-SU | Password and Confirm Password do not match |
+| CT009-SU | Username already exists                    |
+| CT010-SU | Navigate to Login page from Sign Up        |
+
+---
+
+## 🛠️ Automation Strategy
+
+### Key Principles Applied
+
+* Prefer **behavior-based assertions** over static text assertions
+* Validate **URL changes, disabled actions, and navigation state**
+* Avoid fragile assertions tied to copy or UI wording
+* Use `data-test` attributes as primary selectors
 
 Example:
 
-* `CT001-SU` — Successful user registration
-* `CT002-SU` — Required field validation
-* `CT003-SU` — Invalid email format
-* `CT004-SU` — Password constraints
-* `CT005-SU` — Duplicate email handling
-* `CT006–CT010-SU` — Edge cases and business inconsistencies
+> Instead of asserting that an error message text appears, we assert that the **user cannot proceed**, or that a **submit action is blocked**.
 
 ---
 
-## Automation Strategy
+## ⚠️ Known Application Limitation (CT009)
 
-### Tools & Stack
+### Username Already Exists
 
-* Cypress
-* JavaScript
-* Data-test selectors
+During the execution of **CT009-SU**, a critical issue was identified:
 
-### Key Automation Decisions
+* The application **allows registration using an already existing username**
+* No backend or frontend validation prevents duplication
 
-* Prefer **data-test attributes** over CSS selectors
-* Avoid assertions tied to **specific UI text**, when behavior-based assertions are more stable
-* Validate **navigation and state**, not only messages
-* Use Cypress commands to improve readability and reuse
+### QA Decision
 
----
+* The test case is **kept intentionally**
+* The behavior is documented as a **functional gap / bug**, not as a test failure
 
-## Known Issues & Findings
+This demonstrates an important QA principle:
 
-During test execution, some **important system behaviors** were identified:
-
-* Duplicate username validation is **not enforced** at system level
-* Some error messages appear only after specific user interactions (blur/touch)
-* Certain validations are handled inconsistently between frontend and backend
-
-These findings are **documented intentionally**, as identifying gaps is a core QA responsibility.
+> **Automation should reflect product reality, not mask it.**
 
 ---
 
-## Why This Matters
+## 📂 Project Structure (Relevant)
 
-This case demonstrates:
-
-* How to think beyond automation scripts
-* How to design tests that survive UI changes
-* How to document limitations instead of hiding them
-* How QA adds value even when the system has flaws
-
-Automation here is a **means**, not the goal.
-
----
-
-## How to Run the Tests
-
-```bash
-npm install
-npx cypress open
 ```
-
-Or headless:
-
-```bash
-npx cypress run
+cypress/
+ └── tests/
+     └── lume/
+         └── exercises/
+             └── auth/
+                 ├── login.spec.ts
+                 └── signup.spec.ts
 ```
 
 ---
 
-## Project Status
+## 📘 Why This README Matters
 
-This case is **actively evolving**.
+This document is part of a broader goal:
 
-Future additions may include:
+* Simulate **real-world QA documentation**
+* Make the project **self-explanatory** without external guidance
+* Allow anyone reviewing the repository to understand:
 
-* Extended validation scenarios
-* Improved assertions based on backend responses
-* Documentation refinements
-
----
-
-## Language Versions
-
-* 🇺🇸 English (this document)
-* 🇧🇷 Portuguese version available soon
+  * What was tested
+  * Why it was tested
+  * What was found
 
 ---
 
-## Final Notes
+## 🚀 Next Steps
 
-This repository is part of a **QA learning + portfolio journey**.
-
-Feedback, discussions, and improvements are welcome.
+* PT-BR version of this README
+* LinkedIn technical mini-series based on this case
+* Expansion to advanced Login scenarios (session, logout, invalid tokens)
 
 ---
 
-Happy Testing 🚀
+**Author:** Alyson Oliveira
+**Role:** QA Automation Engineer
+**Tools:** Cypress, TypeScript, Git, GitHub
