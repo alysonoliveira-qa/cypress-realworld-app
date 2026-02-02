@@ -5,14 +5,24 @@
   <img alt="Cypress Real World App Logo" src="./src/svgs/rwa-logo.svg#gh-light-mode-only" />
 </p>
 
-<p align="center">  
-  ## 🧪 QA Automation Exercise (Portfolio)
+<div align="center">
 
-This repository is being used as a **QA automation portfolio project**.
+### 🧪 QA Automation Exercise (Portfolio)
 
-➡️ **Access the full QA exercise documentation here:**  
-📂 [QA Automation Exercises – Login & Sign Up](./cypress/tests/lume/exercises/README.md)
+<p>
+This repository is being used as a <strong>QA automation portfolio project</strong>.
 </p>
+
+<p>
+➡️ <strong>Access the full QA exercise documentation here:</strong><br/>
+📂 <a href="./cypress/tests/lume/exercises/README.md">
+QA Automation Exercises – Login & Sign Up
+</a>
+</p>
+
+</div>
+
+
 
 
 <p align="center">
