@@ -1,168 +1,153 @@
-# 🧪 QA Automation Exercise — Login & Sign Up
+# QA Automation Case — Login & Sign Up
 
-## 📌 Contexto
+## Overview
 
-Este documento descreve um **case completo de automação de testes em Cypress**, focado nos fluxos de **Login** e **Sign Up (Cadastro)** da aplicação **Real World App**.
+This repository contains a **complete QA automation case** built on top of the *Real World App* using **Cypress**.
 
-O objetivo não é apenas automatizar cenários, mas **demonstrar raciocínio de QA**, tomada de decisão, análise de UX, comportamento de backend e comunicação clara — exatamente o que recrutadores e times técnicos esperam ver em um portfólio real.
+The goal of this project is **not only automation**, but to demonstrate **QA reasoning, test design decisions, validations, edge cases, and real-world issues** that commonly appear in production systems.
 
----
+This case was intentionally structured as a **portfolio-grade project**, suitable for technical reviews by:
 
-## 🎯 Objetivos do Case
-
-* Validar os principais fluxos críticos de autenticação
-* Cobrir cenários positivos, negativos e de validação de formulário
-* Demonstrar boas práticas de automação com Cypress
-* Evidenciar análise crítica de UX, frontend e backend
-* Documentar decisões, limitações e achados
+* QA Engineers
+* Tech Leads
+* Hiring Managers
+* Recruiters
 
 ---
 
-## 🧠 Estratégia de Testes
+## Why this is a Portfolio Case
 
-A estratégia foi baseada em **mapa mental + agrupamento por intenção**, não apenas por campos.
+Unlike tutorial-style projects, this case focuses on:
 
-### Grupos de Teste
+* Test scenarios derived from **functional analysis**, not just happy paths
+* Clear separation between **test intent** and **test implementation**
+* Assertions based on **user behavior**, not brittle UI details
+* Documentation of **known issues and system limitations**
+* Traceability between test cases, automation, and insights
 
-#### Grupo 1 — Fluxo principal
-
-* CT001-LG — Login com sucesso
-* CT001-SU — Criar conta com dados válidos
-
-#### Grupo 2 — Credenciais inválidas
-
-* CT002-LG — Username não cadastrado
-* CT003-LG — Username válido + senha inválida
-* CT004-LG — Username inválido + senha válida
-
-#### Grupo 3 — Validações de formulário
-
-* CT005-LG — Login sem preencher username
-* CT006-LG — Login sem preencher senha
-
-#### Grupo 4 — Navegação
-
-* CT007-LG — Acessar página de cadastro a partir do Login
-* CT010-SU — Acessar página de Login a partir do Sign Up
-
-#### Grupo 5 — Sign Up (Cadastro)
-
-* CT002-SU — Todos os campos em branco
-* CT003-SU — First Name em branco
-* CT004-SU — Last Name em branco
-* CT005-SU — Username em branco
-* CT006-SU — Password em branco
-* CT007-SU — Confirm Password em branco
-* CT008-SU — Password e Confirm Password diferentes
-* CT009-SU — Username já existente
+This mirrors how QA automation works in real teams.
 
 ---
 
-## ⚙️ Stack e Ferramentas
+## Scope of the Case
 
-* **Cypress** (E2E)
-* **TypeScript**
-* **Data-test selectors**
-* **Git + GitHub Actions**
-* **Prettier + ESLint**
-* **Trello** (modelagem dos cenários)
+### Features Covered
 
----
+* User Sign Up (Registration)
+* User Login
 
-## 🧩 Boas Práticas Aplicadas
+### Test Types
 
-* Uso consistente de `data-test` selectors
-* Testes focados em **comportamento**, não em implementação
-* Evitado uso de `force: true`
-* Separação clara de Arrange / Act / Assert
-* Nomes de testes legíveis e rastreáveis (CTxxx)
+* Functional validation
+* Negative scenarios
+* Field-level validations
+* Business rule enforcement
+* UX-related behavior (error messages, redirects, button states)
 
 ---
 
-## 🔍 Insights Relevantes Encontrados
+## Test Case Structure
 
-### 1️⃣ Botão desabilitado como validação primária
+Each test case follows a consistent pattern:
 
-Em diversos cenários (Login e Sign Up), a aplicação **impede o submit via botão desabilitado**, sem exibir mensagens de erro.
+* **CT ID** (e.g. CT001-SU)
+* **Scenario description**
+* **Expected behavior**
+* **Automation implementation using Cypress**
 
-➡️ Decisão de QA:
+Example:
 
-* Validar o estado `disabled` do botão
-* **Não forçar submit** artificialmente
-* Documentar como comportamento esperado de UX
-
----
-
-### 2️⃣ Mensagens de erro dependentes de interação (blur)
-
-No Sign Up:
-
-* `First Name` exibe erro imediatamente
-* Outros campos só exibem mensagem **após perder o foco (blur)**
-
-➡️ Implicação:
-
-* Testes precisam simular interação real
-* Assertivas diretas em texto podem falhar se o fluxo não respeitar o comportamento do usuário
+* `CT001-SU` — Successful user registration
+* `CT002-SU` — Required field validation
+* `CT003-SU` — Invalid email format
+* `CT004-SU` — Password constraints
+* `CT005-SU` — Duplicate email handling
+* `CT006–CT010-SU` — Edge cases and business inconsistencies
 
 ---
 
-### 3️⃣ Inconsistência no backend — Username duplicado
+## Automation Strategy
 
-No CT009-SU, o sistema **permite criar usuários com username já existente**, sem erro.
+### Tools & Stack
 
-➡️ Classificação:
+* Cypress
+* JavaScript
+* Data-test selectors
 
-* **Defeito funcional (backend)**
-* Registrado como limitação do sistema, não do teste
-* Teste documentado no README e Trello
+### Key Automation Decisions
 
----
-
-### 4️⃣ Erro 401 tratado via toast genérico
-
-Nos fluxos de login inválido:
-
-* Backend retorna **401**
-* Frontend exibe mensagem genérica: `Username or password is invalid`
-
-➡️ Estratégia de teste:
-
-* Assertar o toast
-* Assertar permanência na rota `/signin`
-* Não depender diretamente do status HTTP no teste E2E
+* Prefer **data-test attributes** over CSS selectors
+* Avoid assertions tied to **specific UI text**, when behavior-based assertions are more stable
+* Validate **navigation and state**, not only messages
+* Use Cypress commands to improve readability and reuse
 
 ---
 
-## 📄 Estrutura dos Arquivos
+## Known Issues & Findings
 
-```text
-cypress/tests/lume/exercises/auth/
-├── login.spec.ts
-└── signup.spec.ts
+During test execution, some **important system behaviors** were identified:
+
+* Duplicate username validation is **not enforced** at system level
+* Some error messages appear only after specific user interactions (blur/touch)
+* Certain validations are handled inconsistently between frontend and backend
+
+These findings are **documented intentionally**, as identifying gaps is a core QA responsibility.
+
+---
+
+## Why This Matters
+
+This case demonstrates:
+
+* How to think beyond automation scripts
+* How to design tests that survive UI changes
+* How to document limitations instead of hiding them
+* How QA adds value even when the system has flaws
+
+Automation here is a **means**, not the goal.
+
+---
+
+## How to Run the Tests
+
+```bash
+npm install
+npx cypress open
+```
+
+Or headless:
+
+```bash
+npx cypress run
 ```
 
 ---
 
-## 📘 O que este case demonstra
+## Project Status
 
-* Capacidade de modelar cenários reais
-* Leitura crítica de UX e regras implícitas
-* Comunicação técnica clara
-* Maturidade em decisões de teste
-* Organização de portfólio profissional
+This case is **actively evolving**.
 
----
+Future additions may include:
 
-## 🚀 Próximos Passos
-
-* Evoluir testes para camada de API
-* Criar custom commands
-* Adicionar relatório de execução
-* Integrar métricas de cobertura
+* Extended validation scenarios
+* Improved assertions based on backend responses
+* Documentation refinements
 
 ---
 
-## 🧑‍💻 Autor
+## Language Versions
 
-Projeto desenvolvido como **case de portfólio em QA Automation**, com foco em boas práticas, clareza técnica e empregabilidade.
+* 🇺🇸 English (this document)
+* 🇧🇷 Portuguese version available soon
+
+---
+
+## Final Notes
+
+This repository is part of a **QA learning + portfolio journey**.
+
+Feedback, discussions, and improvements are welcome.
+
+---
+
+Happy Testing 🚀
