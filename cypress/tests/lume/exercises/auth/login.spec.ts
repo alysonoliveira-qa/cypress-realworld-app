@@ -1,9 +1,11 @@
+import { users } from '../../../../fixtures/users'
+
 describe('Login com sucesso', () => {
   it('CT001-LG Deve logar com um usuário válido', () => {
     // Usuário possui acesso ao sistema e está na pagina de Login
     cy.visit('http://localhost:3000')
-    cy.get('[data-test="signin-username"] input').type('Heath93')
-    cy.get('[data-test="signin-password"] input').type('s3cret')
+    cy.get('[data-test="signin-username"] input').type(users.validUser.username)
+    cy.get('[data-test="signin-password"] input').type(users.validUser.password)
     cy.get('[data-test="signin-submit"]').click()
     cy.get('[data-test="sidenav"]').should('be.visible')
   });
@@ -14,9 +16,9 @@ describe('Tentar fazer login com credenciais inválidas', () => {
     // Usuário possui acesso ao sistema e está na pagina de Login
     cy.visit('http://localhost:3000')
     // Preenche username não cadastrado
-    cy.get('[data-test="signin-username"] input').type('username-invalido')
+    cy.get('[data-test="signin-username"] input').type(users.invalidUser.username)
     //Preenche senha inválida
-    cy.get('[data-test="signin-password"] input').type('senha-inválida')
+    cy.get('[data-test="signin-password"] input').type(users.invalidUser.password)
     cy.get('[data-test="signin-submit"]').click()
     //mensagem de erro aparece
     cy.contains('Username or password is invalid').should('be.visible')
@@ -27,8 +29,8 @@ describe('Tentar fazer login com credenciais inválidas', () => {
    it('CT003-LG Login com username válido e senha inválida', () => {
     // Usuário possui acesso ao sistema e está na pagina de Login
     cy.visit('http://localhost:3000')
-    cy.get('[data-test="signin-username"] input').type('Heath93')
-    cy.get('[data-test="signin-password"] input').type('senha-inválida')
+    cy.get('[data-test="signin-username"] input').type(users.validUser.username)
+    cy.get('[data-test="signin-password"] input').type(users.invalidUser.password)
     cy.get('[data-test="signin-submit"]').click()
     cy.contains('Username or password is invalid').should('be.visible')
     cy.url().should('include', '/signin')
@@ -37,8 +39,8 @@ describe('Tentar fazer login com credenciais inválidas', () => {
   it('CT004-LG Login com username inválido e senha válida', () => {
     // Usuário possui acesso ao sistema e está na pagina de Login
     cy.visit('http://localhost:3000')
-    cy.get('[data-test="signin-username"] input').type('username-invalido')
-    cy.get('[data-test="signin-password"] input').type('s3cret')
+    cy.get('[data-test="signin-username"] input').type(users.invalidUser.username)
+    cy.get('[data-test="signin-password"] input').type(users.validUser.password)
     cy.get('[data-test="signin-submit"]').click()
     cy.contains('Username or password is invalid').should('be.visible')
     cy.url().should('include', '/signin')
@@ -48,7 +50,7 @@ describe('Tentar fazer login com credenciais inválidas', () => {
     // Usuário possui acesso ao sistema e está na pagina de Login
     cy.visit('http://localhost:3000')
     // Não preenche o username
-    cy.get('[data-test="signin-password"] input').type('s3cret')
+    cy.get('[data-test="signin-password"] input').type(users.validUser.password)
     cy.get('[data-test="signin-submit"]').should('be.disabled')
     cy.contains('Username is required').should('be.visible')
     cy.url().should('include', '/signin')
@@ -57,7 +59,7 @@ describe('Tentar fazer login com credenciais inválidas', () => {
   it('CT006-LG Login sem preencher senha', () => {
     // Usuário possui acesso ao sistema e está na pagina de Login
     cy.visit('http://localhost:3000')
-    cy.get('[data-test="signin-username"] input').type('Heath93')
+    cy.get('[data-test="signin-username"] input').type(users.validUser.username)
     // Não preenche a senha
     cy.get('[data-test="signin-submit"]').should('be.disabled')
     //Validaçao comentada pois a UX não mostra mensagem de validação para o campo Password.
