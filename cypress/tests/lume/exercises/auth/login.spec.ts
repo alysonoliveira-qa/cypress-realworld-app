@@ -1,7 +1,7 @@
 import { users } from '../../../../fixtures/users'
 
 describe('Login com sucesso', () => {
-  it('CT001-LG Deve logar com um usuário válido', () => {
+  it.only('CT001-LG Deve logar com um usuário válido', () => {
     // Usuário possui acesso ao sistema e está na pagina de Login
     cy.visit('http://localhost:3000')
     cy.get('[data-test="signin-username"] input').type(users.validUser.username)

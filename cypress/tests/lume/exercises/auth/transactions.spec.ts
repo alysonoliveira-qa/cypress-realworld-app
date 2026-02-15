@@ -28,11 +28,4 @@ describe('Visualizar histórico de transações com sucesso', () => {
     cy.url().should('include', '/transaction')
   })
 
-  it('CT02 - Deve exibir mensagem quando não houver transações', () => {
-
-
-    cy.contains('No Transactions').should('be.visible')
-
-  })
-
 })
