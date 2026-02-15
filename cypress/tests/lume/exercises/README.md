@@ -1,156 +1,165 @@
-# QA Automation Exercise – Cypress (Login & Sign Up)
+QA Automation Case Study – Cypress Real World App
+📌 Overview
 
-## 📌 Overview
+This repository documents a portfolio-grade QA Automation case study built on top of the Cypress Real World App.
 
-This repository documents a **complete QA Automation case study** built on top of the **Cypress Real World App**.
-The focus of this exercise is not only automation itself, but also **test design decisions, validation strategies, and real-world trade-offs** that a QA Engineer faces in production environments.
+The goal is not just automation — but demonstrating:
 
-This project is intentionally documented as a **portfolio-ready case**, aiming to be easily understood by:
+Test design thinking
 
-* Recruiters
-* QA Leads
-* Automation Engineers
+Architecture decisions
 
----
+Behavior-driven validation
 
-## 🎯 Goals of This Exercise
+Maintainability strategies
 
-* Design **realistic test scenarios** for critical user flows
-* Apply **good automation practices** using Cypress
-* Focus on **behavioral assertions**, not brittle UI checks
-* Explicitly document **limitations and bugs found in the application**
-* Demonstrate **QA thinking**, not only coding skills
+Real bug discovery
 
----
+This project reflects a transition from QA to Quality Engineering mindset.
 
-## 🧪 Scope Covered
+🎯 Objectives
 
-### Authentication Flows
+Design realistic end-to-end scenarios
 
-* Login
-* Sign Up (User Registration)
+Automate critical user journeys
 
-This README focuses on the **Sign Up flow**, fully modeled, implemented, and analyzed.
+Validate business behavior instead of UI text
 
----
+Apply scalable test architecture
 
-## 🔐 Test Case Design – Login
+Document decisions and trade-offs
 
-The Login flow was the **first functionality automated** in this exercise, as it represents a critical entry point to the system.
+🧪 Scope Covered
+🔐 Authentication
+Login
+ID	Description
+CT001-LG	Login with valid credentials
+CT002-LG	Username not registered
+CT003-LG	Valid username + invalid password
+CT004-LG	Invalid username + valid password
+CT005-LG	Username empty
+CT006-LG	Password empty
+CT007-LG	Navigation to Sign Up
+Sign Up
+ID	Description
+CT001-SU	Create account with valid data
+CT002-SU	Submit with all fields empty
+CT003-SU	First Name empty
+CT004-SU	Last Name empty
+CT005-SU	Username empty
+CT006-SU	Password empty
+CT007-SU	Confirm Password empty
+CT008-SU	Password mismatch
+CT009-SU	Username already exists (bug documented)
+CT010-SU	Navigate to Login
+💸 Transactions & Payments
+Money Transfer
 
-The focus during test design was:
+Transfer with sufficient balance
 
-* Authentication correctness
-* Invalid credential handling
-* Form-level validations
-* Navigation behavior
+Transfer with insufficient balance
 
-### Test Cases Implemented – Login
+Transfer with dynamic values
 
-| ID       | Description                                    |
-| -------- | ---------------------------------------------- |
-| CT001-LG | Login with valid credentials                   |
-| CT002-LG | Login with username not registered             |
-| CT003-LG | Login with valid username and invalid password |
-| CT004-LG | Login with invalid username and valid password |
-| CT005-LG | Attempt login without filling username         |
-| CT006-LG | Attempt login without filling password         |
-| CT007-LG | Navigate to Sign Up page from Login            |
+Edge case: negative value bug discovered
 
----
+Transactions History
 
-## 🧩 Test Case Design – Sign Up
+Validate transaction list rendering
 
-The Sign Up flow was modeled before automation, following a **clear and incremental strategy**.
+Open transaction details
 
-### Test Cases Implemented
+Validate /transaction URL
 
-| ID       | Description                                |
-| -------- | ------------------------------------------ |
-| CT001-SU | Create account with valid data             |
-| CT002-SU | Attempt to submit with all fields empty    |
-| CT003-SU | First Name empty                           |
-| CT004-SU | Last Name empty                            |
-| CT005-SU | Username empty                             |
-| CT006-SU | Password empty                             |
-| CT007-SU | Confirm Password empty                     |
-| CT008-SU | Password and Confirm Password do not match |
-| CT009-SU | Username already exists                    |
-| CT010-SU | Navigate to Login page from Sign Up        |
+CT-002: User with no transactions should see empty state message
 
----
+🧱 Test Architecture
 
-## 🛠️ Automation Strategy
+Custom Cypress commands were refactored and organized by domain:
 
-### Key Principles Applied
+cypress/
+ └── support/
+     └── commands/
+         ├── auth.commands.ts
+         ├── bank.commands.ts
+         └── transaction.commands.ts
 
-* Prefer **behavior-based assertions** over static text assertions
-* Validate **URL changes, disabled actions, and navigation state**
-* Avoid fragile assertions tied to copy or UI wording
-* Use `data-test` attributes as primary selectors
+Why?
 
-Example:
+Separation of concerns
 
-> Instead of asserting that an error message text appears, we assert that the **user cannot proceed**, or that a **submit action is blocked**.
+Maintainability
 
----
+Scalability
 
-## ⚠️ Known Application Limitation (CT009)
+Clear domain responsibility
 
-### Username Already Exists
+TypeScript declarations were added via index.d.ts to ensure full type safety for custom commands.
 
-During the execution of **CT009-SU**, a critical issue was identified:
+🧠 Automation Principles Applied
 
-* The application **allows registration using an already existing username**
-* No backend or frontend validation prevents duplication
+Behavior-based assertions over static text assertions
 
-### QA Decision
+Validation of navigation and state
 
-* The test case is **kept intentionally**
-* The behavior is documented as a **functional gap / bug**, not as a test failure
+Use of data-test attributes as stable selectors
 
-This demonstrates an important QA principle:
+Avoid brittle UI-dependent checks
 
-> **Automation should reflect product reality, not mask it.**
+Incremental commits following Conventional Commits
 
----
+🐞 Real Bug Discovered
 
-## 📂 Project Structure (Relevant)
+A critical business logic flaw was identified:
 
-```
+Sending a negative value during transfer increases the sender’s balance.
+
+This was documented as a real system issue.
+
+This demonstrates:
+
+Exploratory mindset
+
+Edge-case validation
+
+Business-rule awareness
+
+📂 Project Structure (Relevant)
 cypress/
  └── tests/
      └── lume/
          └── exercises/
              └── auth/
                  ├── login.spec.ts
-                 └── signup.spec.ts
-```
+                 ├── signup.spec.ts
+                 ├── payment.spec.ts
+                 ├── transactions.spec.ts
+                 └── notransactions.spec.ts
 
----
+📘 Why This Case Matters
 
-## 📘 Why This README Matters
+This repository is structured to simulate:
 
-This document is part of a broader goal:
+Real QA documentation
 
-* Simulate **real-world QA documentation**
-* Make the project **self-explanatory** without external guidance
-* Allow anyone reviewing the repository to understand:
+Real-world automation evolution
 
-  * What was tested
-  * Why it was tested
-  * What was found
+Professional commit history
 
----
+Engineering-level thinking applied to testing
 
-## 🚀 Next Steps
+🚀 What This Project Demonstrates
 
-* PT-BR version of this README
-* LinkedIn technical mini-series based on this case
-* Expansion to advanced Login scenarios (session, logout, invalid tokens)
+QA → QE transition
 
----
+Structured automation architecture
 
-**Author:** Alyson Oliveira
-**Role:** QA Automation Engineer
-**Tools:** Cypress, TypeScript, Git, GitHub
+Domain-driven test organization
+
+Bug discovery and documentation
+
+Clean Git history practices
+
+Author: Alyson Oliveira
+Role: QA in transition to Quality Engineering
+Stack: Cypress · TypeScript · Git · GitHub
