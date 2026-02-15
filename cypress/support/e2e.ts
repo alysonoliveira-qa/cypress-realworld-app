@@ -3,6 +3,12 @@ import "@cypress/code-coverage/support";
 import "./commands";
 import { isMobile } from "./utils";
 
+import './commands'
+import './commands/auth.commands'
+import './commands/bank.commands'
+import './commands/transaction.commands'
+
+
 beforeEach(() => {
   // cy.intercept middleware to remove 'if-none-match' headers from all requests
   // to prevent the server from returning cached responses of API requests
