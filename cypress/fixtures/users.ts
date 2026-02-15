@@ -9,7 +9,7 @@ export const users = {
     password: 'wrongPass'
   },
 
-  friendsList: {
+  friendList: {
     friend1: 'Lia Rosenbaum'
 
   }
