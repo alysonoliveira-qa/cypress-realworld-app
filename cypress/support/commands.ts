@@ -1,6 +1,11 @@
 // @ts-check
 ///<reference path="../global.d.ts" />
 
+import './commands/auth.commands'
+import './commands/bank.commands'
+import './commands/transaction.commands'
+
+
 import { pick } from "lodash/fp";
 import { differenceInMonths, parse as parseDate } from "date-fns";
 import { isMobile } from "./utils";
