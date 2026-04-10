@@ -75,13 +75,14 @@ This project reflects a **clear transition from QA to Quality Engineering mindse
 ## 🧱 Test Architecture
 
 Custom Cypress commands were organized by domain:
-
+```text
 cypress/
 └── support/
 └── commands/
 ├── auth.commands.ts
 ├── bank.commands.ts
 └── transaction.commands.ts
+```
 
 ### Why this structure?
 
@@ -122,7 +123,7 @@ This demonstrates:
 ---
 
 ## 📂 Relevant Project Structure
-
+```text
 cypress/
 └── tests/
 └── lume/
@@ -133,7 +134,7 @@ cypress/
 ├── payment.spec.ts
 ├── transactions.spec.ts
 └── notransactions.spec.ts
-
+```
 ---
 
 ## 🚀 What This Project Demonstrates
